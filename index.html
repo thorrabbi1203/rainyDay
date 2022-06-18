@@ -11,7 +11,6 @@
       style="display: none"
       id="myAudio"
       loop
-      autoplay
       controls
     ></audio>
     <section>
@@ -21,6 +20,7 @@
     <script>
       function rain() {
         document.getElementById("myAudio").volume = 0.5;
+        document.getElementById("myAudio").play();
         var image = document.getElementById("background");
         image.onload = function () {
           var rainyDay = new RainyDay({
