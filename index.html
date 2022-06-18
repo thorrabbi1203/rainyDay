@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rainy Day</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <audio
+      src="audio.mp3"
+      style="display: none"
+      id="myAudio"
+      loop
+      autoplay
+      controls
+    ></audio>
+    <section>
+      <img id="background" src="" />
+    </section>
+    <script src="rainyday.min.js"></script>
+    <script>
+      function rain() {
+        document.getElementById("myAudio").volume = 0.5;
+        var image = document.getElementById("background");
+        image.onload = function () {
+          var rainyDay = new RainyDay({
+            image: this,
+            fps: 30,
+            blur: 10,
+          });
+          rainyDay.rain([[5, 2, 2]], 0);
+        };
+        image.src = "bg.jpg";
+      }
+      rain();
+    </script>
+  </body>
+</html>
