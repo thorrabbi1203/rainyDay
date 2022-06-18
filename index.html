@@ -4,29 +4,16 @@
     <meta charset="utf-8" />
     <title>Rainy Day</title>
     <link rel="stylesheet" href="style.css" />
-    <iframe
-      src="https://cross-origin.com/myvideo.html"
-      allow="autoplay"
-    ></iframe>
-
-    <iframe
-      src="https://cross-origin.com/myvideo.html"
-      allow="autoplay; fullscreen"
-    ></iframe>
   </head>
   <body>
-    <audio
-      src="audio.mp3"
-      style="display: none"
-      id="myAudio"
-      loop
-      controls
-    ></audio>
+    <audio hidden="true" id="myAudio" controls loop>
+      <source src="audio.mp3" type="audio/mp3" />
+    </audio>
     <section>
       <img id="background" src="" />
     </section>
-    <!-- <script src="rainyday.min.js"></script> -->
-    <!-- <script>
+    <script src="rainyday.min.js"></script>
+    <script>
       function rain() {
         document.getElementById("myAudio").volume = 0.5;
         document.getElementById("myAudio").play();
@@ -42,6 +29,6 @@
         image.src = "bg.jpg";
       }
       rain();
-    </script> -->
+    </script>
   </body>
 </html>
