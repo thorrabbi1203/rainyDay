@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <audio hidden="true" id="myAudio" controls preload="auto" loop>
+    <audio id="myAudio" controls autoplay hidden="true" loop>
       <source src="audio.mp3" type="audio/mp3" />
     </audio>
     <section>
@@ -15,8 +15,8 @@
     <script src="rainyday.min.js"></script>
     <script>
       function rain() {
-        // document.getElementById("myAudio").volume = 0.5;
-        // document.getElementById("myAudio").play();
+        document.getElementById("myAudio").volume = 0.5;
+        document.getElementById("myAudio").play();
         var image = document.getElementById("background");
         image.onload = function () {
           var rainyDay = new RainyDay({
@@ -29,22 +29,6 @@
         image.src = "bg.jpg";
       }
       rain();
-      window.addEventListener("load", function () {
-        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        var source = audioCtx.createBufferSource();
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "audio.mp3");
-        xhr.responseType = "arraybuffer";
-        xhr.addEventListener("load", function (r) {
-          audioCtx.decodeAudioData(xhr.response, function (buffer) {
-            source.buffer = buffer;
-            source.connect(audioCtx.destination);
-            source.loop = false;
-          });
-          source.start(0);
-        });
-        xhr.send();
-      });
     </script>
   </body>
 </html>
