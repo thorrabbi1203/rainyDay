@@ -5,7 +5,7 @@
     <title>Rainy Day</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body onclick="playAudio()">
     <audio id="myAudio" controls autoplay hidden="true" loop>
       <source src="audio.mp3" type="audio/mp3" />
     </audio>
@@ -14,18 +14,28 @@
     </section>
     <script src="rainyday.min.js"></script>
     <script>
+      async function playAudio() {
+        try {
+          const element = document.getElementById("myAudio");
+
+          element.play();
+        } catch (e) {}
+      }
       function rain() {
-        document.getElementById("myAudio").volume = 0.5;
-        var image = document.getElementById("background");
-        image.onload = function () {
-          var rainyDay = new RainyDay({
-            image: this,
-            fps: 30,
-            blur: 10,
-          });
-          rainyDay.rain([[5, 2, 2]], 0);
-        };
-        image.src = "bg.jpg";
+        try {
+          var image = document.getElementById("background");
+          image.onload = function () {
+            var rainyDay = new RainyDay({
+              image: this,
+              fps: 30,
+              blur: 10,
+            });
+            rainyDay.rain([[5, 2, 2]], 0);
+          };
+          image.src = "bg.jpg";
+        } catch {
+        } finally {
+        }
       }
       rain();
     </script>
